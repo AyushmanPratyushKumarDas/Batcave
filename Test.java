@@ -12,7 +12,7 @@ class Date{
     String getdate()
     {
         System.out.println("Date="+day+"/"+month+"/"+year);
-        return null;
+        return "Date="+day+"/"+month+"/"+year;
     }
 }
  class Adress
@@ -28,7 +28,7 @@ class Date{
      {
          System.out.println("the adress is="+streetname+","+
                  plot_no+","+pin);
-         return null;
+         return "the adress is="+streetname+","+plot_no+","+pin;
      }
  }
 class Employee
