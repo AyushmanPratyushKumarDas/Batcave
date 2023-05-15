@@ -12,12 +12,20 @@ class Date{
    {
        Scanner sc = new Scanner(System.in);
        System.out.println("Enter date,month and year...");
-       month=sc.nextInt();day= sc.nextInt();year=sc.nextInt();
+       month=sc.nextInt();
+       day= sc.nextInt();
+       year=sc.nextInt();
+
+   }
+   public void after(Date d1)
+   {
+
    }
     void getdate()
     {
         System.out.println("Date="+day+"/"+month+"/"+year);
     }
+
 }
  class Adress
  {
@@ -34,7 +42,7 @@ class Date{
                  plot_no+","+pin);
      }
  }
-class Employee
+class Employee extends Date
 {
    public String name,jobPosition,contactNumber;
     public Date hireDate; public Adress adress;
@@ -81,15 +89,6 @@ class Employee
         hireDate.getdate();
     }
 
-   /* @Override
-     public String toString() {
-
-        String s ="the name of the employee is "+name+"\n"+"the jobPosition of the employee is "+jobPosition
-                +"\n"+"the contactNumber of the employee is "+contactNumber+"\n"+"the empId of the employee is "+empId
-                +"\n"+"the salary of the employee is "+salary+"\n"+"the adress of the employee is "+adress.getadress()+
-                "\n"+"the Date is "+ hireDate.getdate();
-        return s;
-    }*/
 }
 public class Test {
     static int n;static String jp;
@@ -119,7 +118,7 @@ public class Test {
     public static void getEmployeesByJobPosition(Employee e[], String jp)
     {
         for (int i = 0;i<e.length;i++) {
-            if (e[i].jobPosition == jp) {
+            if (e[i].jobPosition.equals(jp)) {
                e[i].displayEmpInfo();
             }
         }
@@ -128,17 +127,24 @@ public class Test {
     public static void getEmployeesByHireDate(Employee e[], Date d1, Date d2)
     {
 
-       for (int i = 0;i<e.length;i++)
-        {
-            Date d = e[i].hireDate;
-            if( d.month >= d1.month&& d.month<=d2.month && d.day>=d1.day && d.day<=d2.day
-             && d.year>= d1.year&& d.year<= d2.year)
-            {
-                e[i].displayEmpInfo();
+        for (int i=0;i<e.length;i++) {
+            if(e[i].day>=d1.day &&e[i].day<=d2.day) {
+                if(e[i].year==d1.year) {
+                    int m=e[i].month;
+                    if(m==4|m==5|m==6|m==7|m==8|m==9|m==10|m==11|m==12) {
+                        System.out.println("\n\t**Details of employees whose hireDate is between 01-04-2022 to 31-03-2023");
+                        e[i].displayEmpInfo();
+                    }
+                }
+                else if(e[i].year==d2.year) {
+                    int m2=e[i].month;
+                    if(m2==1|m2==2|m2==3) {
+                        System.out.println("\n\t**Details of employees whose hireDate is between 01-04-2022 to 31-03-2023");
+                        e[i].displayEmpInfo();
+                    }
+                }
             }
         }
-
-
     }
 
     public static int foreignEmployeeCount(Employee e[])
@@ -179,11 +185,11 @@ public class Test {
         }
         //display the details..
         Date d1,d2;
-        for (int i=0;i<e.length;i++)
+        /*for (int i=0;i<e.length;i++)
         {
             System.out.println("Data of Employee No."+i);
             e[i].displayEmpInfo();
-        }
+        }*/
 
        System.out.println("the details of employee by arranging according" +
                 " to salary(Descending order)");
