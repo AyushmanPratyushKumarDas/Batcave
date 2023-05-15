@@ -1,4 +1,4 @@
-package Minor_Project_1;
+package Red_no_2241004040;
 import java.util.ArrayList;
 import java.util.Scanner;
 class Date{
@@ -15,11 +15,6 @@ class Date{
        month=sc.nextInt();
        day= sc.nextInt();
        year=sc.nextInt();
-
-   }
-   public void after(Date d1)
-   {
-
    }
     void getdate()
     {
