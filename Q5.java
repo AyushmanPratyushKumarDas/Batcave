@@ -1,16 +1,19 @@
-
 public class Q5 {
-	public boolean isOdd(int n) //use bitwise operator
-	{
-		
-		//return (n&1)==1; //we are using bit wise and(&) operator to compare.....
-		//return(n|1)==1; //here we are using bit wise XOR.......
-		return (n^1)==1;  //here we are using bit wise OR
-	}
+    public static int sum_of_digits(int n)
+    {
+        int sum=0;
+        while(n>0)
+        {
+            int rem = n%10;
+            sum=sum+rem;
+            n=n/10;
+        }
+        if(sum<10){return sum;}
+        else
+            return sum=sum_of_digits(sum);
+    }
+    public static void main(String[] args) {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
+        System.out.println(sum_of_digits(9294));
+    }
 }
