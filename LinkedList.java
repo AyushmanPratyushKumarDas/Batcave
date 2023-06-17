@@ -207,8 +207,9 @@ public class LinkedList {
         System.out.println("enter the registration number");
         int r = sc.nextInt();
             node p = head;
-            int pos = 0;
-            while (p!=null) {
+            int pos=0;
+            int c = count(head);
+            while (c>0) {
                 if(p.regd_no==r){
                     System.out.println("postion is "+pos);
                     System.out.println("update marks");
@@ -216,9 +217,11 @@ public class LinkedList {
                 }
                 pos++;
                 p=p.next;
-                System.out.println("want to see list(y/n)");
-                char ch=sc.next().charAt(0);
-                if(ch=='y'){display(head);}
+                c--;
+                }
+        System.out.println("want to see list(y/n)");
+        char ch=sc.next().charAt(0);
+        if(ch=='y'){display(head);
             }
     }
 
