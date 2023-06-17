@@ -44,18 +44,24 @@ public class LinkedList {
                 }
             }
         display(head);
+        System.out.println("want to edit mark of a regno(y/n");
+        char ch = sc.next().charAt(0);
+        if(ch=='y'){search(head);}
+        System.out.println();
     }
     public static void createe(node head)
     {
         node n1 = create_node();
         head=n1;
-        System.out.println("enter number of students");
-        int n = sc.nextInt();
-        while(n>0)
+        System.out.println("want more(y/n)");
+        char  cc= sc.next().charAt(0);
+        while(cc!='n')
         {
             node n2 = create_node();
             n1.next=n2;
-            n--;
+            n1=n2;//lint p to q
+            System.out.println("want more(y/n)");
+           cc= sc.next().charAt(0);
         }
         display(head);
     }
@@ -64,7 +70,7 @@ public class LinkedList {
         node p = head;
         while(p!=null)
         {
-            System.out.println(p.regd_no+" "+p.mark);
+            System.out.println("["+p.regd_no+" "+p.mark+"]");
             p=p.next;
         }
     }
@@ -86,7 +92,10 @@ public class LinkedList {
         node n = create_node();
         n.next=p;
         p=n;
-        display(head);
+
+        System.out.println("want to see list(y/n)");
+        char ch=sc.next().charAt(0);
+        if(ch=='y'){display(head);}
         return p;
     }
     public static node InsEnd(node head)
@@ -104,11 +113,13 @@ public class LinkedList {
         }
         p=p.next;
         p.next=n;
-        display(head);
+            System.out.println("want to see list(y/n)");
+            char ch=sc.next().charAt(0);
+            if(ch=='y'){display(head);}
         }
         return p;
     }
-    public static node IntAny(node head)
+    public static node InsAny(node head)
     {
         node p = head;
         node n =create_node();
@@ -129,7 +140,10 @@ public class LinkedList {
             }
             n.next=p.next;
             p.next=n;
-            display(head);
+
+            System.out.println("want to see list(y/n)");
+            char ch=sc.next().charAt(0);
+            if(ch=='y'){display(head);}
         }
         return p;
     }
@@ -142,7 +156,10 @@ public class LinkedList {
             p=p.next;
             p.next=null;
         }
-        display(head);
+
+        System.out.println("want to see list(y/n)");
+        char ch=sc.next().charAt(0);
+        if(ch=='y'){display(head);}
         return p;
     }
     public static node DelEnd(node head)
@@ -158,7 +175,9 @@ public class LinkedList {
                 p=p.next;
             }
             p.next=null;
-            display(head);
+            System.out.println("want to see list(y/n)");
+            char ch=sc.next().charAt(0);
+            if(ch=='y'){display(head);}
         }
         return head;
     }
@@ -173,14 +192,15 @@ public class LinkedList {
            while (pos > 1) {
                pos--;
                p = p.next;
-           }
+            }
            node q = p.next;
            p.next = q.next;
            q.next = null;
-           System.out.println("want to see list(y/n)");
-           char ch=sc.next().charAt(0);
-           if(ch=='y'){display(head);}
-       }return head;
+           }
+       System.out.println("want to see list(y/n)");
+       char ch=sc.next().charAt(0);
+       if(ch=='y'){display(head);}
+       return head;
    }
 
     public static void delete_conditioned(node head)
@@ -201,15 +221,19 @@ public class LinkedList {
                 p=p.next;
             }
         }
+        System.out.println("want to see list(y/n)");
+        char ch=sc.next().charAt(0);
+        if(ch=='y'){display(head);}
     }
-    public static void search_position(node head)
+    public static void search(node head)
     {
+        createe(head);
         System.out.println("enter the registration number");
         int r = sc.nextInt();
             node p = head;
             int pos=0;
             int c = count(head);
-            while (c>0) {
+            while (p!=null) {
                 if(p.regd_no==r){
                     System.out.println("postion is "+pos);
                     System.out.println("update marks");
@@ -217,19 +241,87 @@ public class LinkedList {
                 }
                 pos++;
                 p=p.next;
-                c--;
                 }
         System.out.println("want to see list(y/n)");
         char ch=sc.next().charAt(0);
         if(ch=='y'){display(head);
             }
     }
+    public static node reversal(node head)
+    {
+        createe(head);
+        if(head==null||head.next==null){
+            display(head);
+            return head;}
+        else{
+        node p,q,r;
+        p=null;
+        q=head;
+        r=head.next;
+        q.next=null;
+        while(r!=null)
+        {
+            p=q;
+            q=r;
+            r=r.next;
+            q.next=p;
+
+        }
+        head=q;}
+        display(head);
+        return head;
+    }
+
+    public static void sort(node head)
+    {
+
+        node p = head,q=null;
+        node temp;
+        if(head==null)
+        {
+            return;
+        }
+        else
+        {
+            while (p != null) {
+                q=p.next;
+                while(q!=null){
+
+                    if(p.mark>q.mark){
+                        p.next=q;
+                    }
+                    q=q.next;
+                }
+                p=p.next;
+            }
+        }
+        display(head);
+    }
 
     public static void main(String[] args) {
         node head = null;
-        create1(head);
-        InsEnd(head);
+        //createe(head);
+        //sort(head);
+        reversal(head);
+        while(true)
+        {
+            System.out.println("0:exit");
+            System.out.println("1:create");
+            System.out.println("2:display");
+            System.out.println("3:count");
+            System.out.println("4:delete start");
+            System.out.println("5:delete end");
+            System.out.println("6:delete any");
+            System.out.println("7:insert start");
+            System.out.println("8:insert end");
+            System.out.println("9:insert any");
+            System.out.println("10:sorting");
+            System.out.println("11:delete according to a registration");
+            System.out.println("12:reversal");
+            System.out.println("13:searching");
 
+            System.out.println("enter choice");
+        }
 
     }
 }
