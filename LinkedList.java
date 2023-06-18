@@ -15,6 +15,7 @@ class node
 public class LinkedList {
     static Scanner sc = new Scanner(System.in);
     //node head is null initially
+    public  static node head=null;
     public static node create_node()
     {
         System.out.println("enter registration number");
@@ -63,7 +64,7 @@ public class LinkedList {
             System.out.println("want more(y/n)");
            cc= sc.next().charAt(0);
         }
-        display(head);
+       // display(head);
     }
     public static void display(node head)
     {
@@ -93,9 +94,9 @@ public class LinkedList {
         n.next=p;
         p=n;
 
-        System.out.println("want to see list(y/n)");
-        char ch=sc.next().charAt(0);
-        if(ch=='y'){display(head);}
+        //System.out.println("want to see list(y/n)");
+        //char ch=sc.next().charAt(0);
+        //if(ch=='y'){display(head);}
         return p;
     }
     public static node InsEnd(node head)
@@ -113,9 +114,9 @@ public class LinkedList {
         }
         p=p.next;
         p.next=n;
-            System.out.println("want to see list(y/n)");
-            char ch=sc.next().charAt(0);
-            if(ch=='y'){display(head);}
+           // System.out.println("want to see list(y/n)");
+            //char ch=sc.next().charAt(0);
+            //if(ch=='y'){display(head);}
         }
         return p;
     }
@@ -132,7 +133,7 @@ public class LinkedList {
         else
         {
             System.out.println("enter the position");
-            int pos = 3;
+            int pos = sc.nextInt();
             while(pos>1)
             {
                 pos--;
@@ -141,9 +142,9 @@ public class LinkedList {
             n.next=p.next;
             p.next=n;
 
-            System.out.println("want to see list(y/n)");
-            char ch=sc.next().charAt(0);
-            if(ch=='y'){display(head);}
+          //  System.out.println("want to see list(y/n)");
+            //char ch=sc.next().charAt(0);
+            //if(ch=='y'){display(head);}
         }
         return p;
     }
@@ -157,9 +158,9 @@ public class LinkedList {
             p.next=null;
         }
 
-        System.out.println("want to see list(y/n)");
-        char ch=sc.next().charAt(0);
-        if(ch=='y'){display(head);}
+       // System.out.println("want to see list(y/n)");
+        //char ch=sc.next().charAt(0);
+        //if(ch=='y'){display(head);}
         return p;
     }
     public static node DelEnd(node head)
@@ -175,9 +176,9 @@ public class LinkedList {
                 p=p.next;
             }
             p.next=null;
-            System.out.println("want to see list(y/n)");
-            char ch=sc.next().charAt(0);
-            if(ch=='y'){display(head);}
+           // System.out.println("want to see list(y/n)");
+            //char ch=sc.next().charAt(0);
+            //if(ch=='y'){display(head);}
         }
         return head;
     }
@@ -197,9 +198,9 @@ public class LinkedList {
            p.next = q.next;
            q.next = null;
            }
-       System.out.println("want to see list(y/n)");
-       char ch=sc.next().charAt(0);
-       if(ch=='y'){display(head);}
+      // System.out.println("want to see list(y/n)");
+       //char ch=sc.next().charAt(0);
+       //if(ch=='y'){display(head);}
        return head;
    }
 
@@ -221,13 +222,12 @@ public class LinkedList {
                 p=p.next;
             }
         }
-        System.out.println("want to see list(y/n)");
+        /*System.out.println("want to see list(y/n)");
         char ch=sc.next().charAt(0);
-        if(ch=='y'){display(head);}
+        if(ch=='y'){display(head);}*/
     }
     public static void search(node head)
     {
-        createe(head);
         System.out.println("enter the registration number");
         int r = sc.nextInt();
             node p = head;
@@ -242,16 +242,15 @@ public class LinkedList {
                 pos++;
                 p=p.next;
                 }
-        System.out.println("want to see list(y/n)");
-        char ch=sc.next().charAt(0);
-        if(ch=='y'){display(head);
-            }
+        //System.out.println("want to see list(y/n)");
+        //char ch=sc.next().charAt(0);
+        //if(ch=='y'){display(head);
+          //  }
     }
     public static node reversal(node head)
     {
-        createe(head);
         if(head==null||head.next==null){
-            display(head);
+          //  display(head);
             return head;}
         else{
         node p,q,r;
@@ -268,16 +267,16 @@ public class LinkedList {
 
         }
         head=q;}
-        display(head);
+       // display(head);
         return head;
     }
 
     public static void sort(node head)
     {
 
+        createe(head);
         node p = head,q=null;
-        node temp;
-        if(head==null)
+        if(head==null||head.next==null)
         {
             return;
         }
@@ -287,24 +286,31 @@ public class LinkedList {
                 q=p.next;
                 while(q!=null){
 
-                    if(p.mark>q.mark){
-                        p.next=q;
+                    if(p.mark<q.mark){
+                       float temp1 = p.mark;
+                       int temp2 = p.regd_no;
+                        p.mark=q.mark;
+                        p.regd_no=q.regd_no;
+                        q.mark=temp1;
+                        q.regd_no=temp2;
                     }
                     q=q.next;
                 }
                 p=p.next;
             }
         }
-        display(head);
+
     }
 
     public static void main(String[] args) {
-        node head = null;
+
+        //node head=null;
         //createe(head);
         //sort(head);
-        reversal(head);
+       // reversal(head);
         while(true)
         {
+            System.out.println("*****menu*****");
             System.out.println("0:exit");
             System.out.println("1:create");
             System.out.println("2:display");
@@ -321,6 +327,30 @@ public class LinkedList {
             System.out.println("13:searching");
 
             System.out.println("enter choice");
+            int choice = sc.nextInt();
+            switch(choice)
+            {
+                case 0:System.exit(0);
+                case 1:createe(head);break;
+                case 2:display(head);break;
+                case 3:count(head);break;
+                case 4:DelBeg(head);break;
+                case 5:DelEnd(head);break;
+                case 6:
+                    System.out.println("enter position");
+                    int pos = sc.nextInt();
+                    DelAny(head,pos);break;
+                case 7:InsBeg(head);break;
+                case 8:InsEnd(head);break;
+                case 9:InsAny(head);break;
+                case 10:sort(head);break;
+                case 11:delete_conditioned(head);break;
+                case 12:reversal(head);break;
+                case 13:search(head);break;
+
+                default:
+                    System.out.println("wrong choice");
+            }
         }
 
     }
